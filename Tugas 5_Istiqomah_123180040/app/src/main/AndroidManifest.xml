@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tugas5">
-        <activity android:name=".content.EditActivity"></activity>
-        <activity android:name=".content.AddActivity"></activity>
         <activity android:name=".content.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

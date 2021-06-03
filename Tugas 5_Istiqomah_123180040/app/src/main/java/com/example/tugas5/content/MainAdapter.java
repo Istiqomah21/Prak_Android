@@ -29,7 +29,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.viewHolder> {
 
     @NonNull
     @Override
-    public MainAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.music_item,parent,false);
         return new viewHolder(view);
     }
@@ -37,21 +37,21 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.viewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.viewHolder holder, int position) {
         final DataMusic item = list.get(position);
-        holder.id.setText(item.getId());
+        //holder.id.setText(item.getId());
         holder.tvJudul.setText(item.getJudul());
         holder.tvPenyanyi.setText(item.getPenyanyi());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mview.editData(item);
             }
         });
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, EditActivity.class);
-                context.startActivity(intent);
+            public boolean onLongClick(View v) {
+                mview.deleteData(item);
+                return true;
             }
         });
     }
@@ -66,6 +66,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.viewHolder> {
         CardView cardView;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+            //id = itemView.findViewById(R.id.tv_id);
             tvJudul = itemView.findViewById(R.id.tv_judul);
             tvPenyanyi = itemView.findViewById(R.id.tv_penyanyi);
             cardView = itemView.findViewById(R.id.cv_cardview);

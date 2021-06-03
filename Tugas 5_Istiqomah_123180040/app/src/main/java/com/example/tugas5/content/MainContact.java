@@ -11,6 +11,7 @@ public interface MainContact {
     //untuk codingan activity
     interface content extends View.OnClickListener{
         void successAdd();
+        void resetForm();
         void successDelete();
         void getData(List<DataMusic> list);
         void editData(DataMusic item);

@@ -97,6 +97,10 @@ public class MainPresenter implements MainContact.presenter{
             appDatabase.dao().deleteData(dataMusic);
             return null;
         }
+        protected void onPostExecute(Long along){
+            super.onPostExecute(along);
+            view.successDelete();
+        }
     }
 
     @Override
